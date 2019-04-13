@@ -59,7 +59,30 @@
                             {{ trans( $show->q_order) }}
                             <br><hr>
                         </div>
-
+                        <div class="col-md-12">
+                            @if ($show->answers_relation->count())
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>{{ trans('main.answer') }}</th>
+                                            <th>{{ trans('main.status') }}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($show->answers_relation as $a)
+                                            <tr>
+                                                <td>{{ $a->answer }}</td>
+                                                <td>{{ $a->status }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            @else
+                                <div class="alert alert-info">
+                                    {{ trans('main.no_answers') }} <a href="{{ route('answers.create') }}?q_id={{ $show->id }}">{{ trans('main.add') }}</a>
+                                </div>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>

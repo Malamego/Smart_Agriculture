@@ -16,6 +16,10 @@
                 $('#' + getUrlVars()['model']).modal('show');
             }, 1000); // Delay Becuase tyhe datatable is not render the modal yet
         }
+
+        $('.select2').select2({
+            width: '100%',
+        })
     });
 
     function getUrlVars()

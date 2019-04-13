@@ -1,71 +1,100 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="{{ GetLanguage() }}" dir="{{ GetDirection() }}">
+    <!--<![endif]-->
+    <!-- BEGIN HEAD -->
+    <head>
+        <meta charset="utf-8" />
+        <title>{{ trans('main.login') }}</title>
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
 
-                        <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+        <meta content="Mario Adel" name="author" />
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+        {{-- <link rel="shortcut icon" href="favicon.ico" /> --}}
 
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+        <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+        <link href="{{asset('backend/base/css/main-'.GetDirection().'.min.css')}}" rel="stylesheet" type="text/css" />
 
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+        <!-- BEGIN PAGE LEVEL STYLES -->
+        <link href="{{ asset('backend/assets/pages/css/login.min.css') }}" rel="stylesheet" type="text/css" />
+        <!-- END PAGE LEVEL STYLES -->
+        <!-- BEGIN THEME LAYOUT STYLES -->
+        <!-- END THEME LAYOUT STYLES -->
+        <link rel="shortcut icon" href="favicon.ico" /> </head>
+    <!-- END HEAD -->
 
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+    <body class=" login">
+        <!-- BEGIN LOGO -->
+        <div class="logo">
+            <a href="{{ url('/login') }}">
+                <img style="width:100px" src="{{ asset('frontend/img/core-img/logo.jpg') }}" alt="" />
+            </a>
         </div>
-    </div>
-</div>
-@endsection
+        <!-- END LOGO -->
+        <!-- BEGIN LOGIN -->
+        <div class="content">
+            @if ($errors->count())
+                <div class="alert alert-danger">
+                    <button class="close" data-close="alert"></button>
+                    <span> {{ trans('main.login_error') }} </span>
+                </div>
+            @endif
+            <!-- BEGIN LOGIN FORM -->
+            <form class="login-form" action="{{ url('/login') }}" method="post">
+                {{ csrf_field() }}
+                <h3 style="float:  {{ GetLanguage() == 'en' ? 'left' : 'right' }}  " class="form-title font-green">{{ trans('main.login') }}</h3>
+                @if (GetLanguage() == 'en')
+                    <a style="float:  {{ GetLanguage() == 'en' ? 'left' : 'right' }} ; position: absolute;  {{ GetLanguage() != 'en' ? 'left' : 'right' }} : 30px; top: {{ $errors->count() ? '108px' : '37px' }}; text-decoration: none" href="{{ url('/lang/ar') }}">
+                        {{ ' عربي ' }} <i class="fa fa-globe"></i>
+                    </a>
+                @else
+                    <a style="float:  {{ GetLanguage() == 'en' ? 'left' : 'right' }} ; position: absolute;  {{ GetLanguage() != 'en' ? 'left' : 'right' }} : 30px; top: {{ $errors->count() ? '108px' : '37px' }}; text-decoration: none" href="{{ url('/lang/en') }}">
+                        {{ ' English ' }} <i class="fa fa-globe"></i>
+                    </a>
+                @endif
+                <div class="form-group">
+                    <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                    <label class="control-label visible-ie8 visible-ie9">{{ trans('main.email') }}</label>
+                    <input class="form-control form-control-solid placeholder-no-fix" type="email" placeholder="{{ trans('main.email') }}" name="email" required />
+                </div>
+                <div class="form-group">
+                    <label class="control-label visible-ie8 visible-ie9">{{ trans('main.password') }}</label>
+                    <input class="form-control form-control-solid placeholder-no-fix" type="password" placeholder="{{ trans('main.password') }}" name="password" />
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn green uppercase">{{ trans('main.login') }}</button>
+                    <label class="rememberme check mt-checkbox mt-checkbox-outline">
+                        <input type="checkbox" name="remember" value="1" />{{ trans('main.remember') }}
+                        <span></span>
+                    </label>
+                </div>
+            </form>
+            <!-- END LOGIN FORM -->
+        </div>
+        <div class="copyright">
+            <a target="_blank" href="https://www.facebook.com/megomalamego">
+                @@Mario Adel
+            </a>
+         </div>
+         <!--[if lt IE 9]>
+         <script src="{{asset('backend/assets/global/plugins/respond.min.js')}}"></script>
+         <script src="{{asset('backend/assets/global/plugins/excanvas.min.js')}}"></script>
+         <script src="{{asset('backend/assets/global/plugins/ie8.fix.min.js')}}"></script>
+         <![endif]-->
+
+         <script src="{{asset('backend/base/js/main.min.js')}}" type="text/javascript"></script>
+
+         <script src="{{asset('backend/base/js/sweetalert.min.js')}}" type="text/javascript"></script>
+
+         @include('backend.theme.includes.messages')
+     </body>
+ </html>

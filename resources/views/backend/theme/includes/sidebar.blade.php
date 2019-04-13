@@ -130,7 +130,7 @@
                              <span class="title">{{ trans('main.show-all') }} {{ trans('main.questions') }}</span>
                          </a>
                      </li>
- <!-- Add Courses_details -->
+                     <!-- Add Courses_details -->
                       <li class="nav-item {{ active_route('answers.create') }}">
                           <a href="{{ route('answers.create') }}" class="nav-link ">
                               <span class="title">{{ trans('main.add') }} {{ trans('main.answers') }}</span>
@@ -196,7 +196,7 @@
                              <span class="title">{{ trans('main.show-all') }} {{ trans('main.courses') }}</span>
                          </a>
                      </li>
-<!-- Add Courses_details -->
+                     <!-- Add Courses_details -->
                      <li class="nav-item {{ active_route('courses_details.create') }}">
                          <a href="{{ route('courses_details.create') }}" class="nav-link ">
                              <span class="title">{{ trans('main.add') }} {{ trans('main.courses_details') }}</span>

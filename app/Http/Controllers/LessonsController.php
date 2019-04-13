@@ -109,7 +109,7 @@ class lessonsController extends Controller
     {
         $lesson = Lesson::find($id);
 
-        if ($lesson && Lesson::where('id', '!=', $id)->where('myorder', $request->myorder)->exists()) {
+        if (Lesson::where('id', '!=', $id)->where('course_id', $request->course_id)->where('myorder', $request->myorder)->exists()) {
             session()->flash('error', trans('main.ordernumber'));
             return redirect()->back();
         }

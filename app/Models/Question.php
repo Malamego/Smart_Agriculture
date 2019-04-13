@@ -14,7 +14,7 @@ class Question extends Model
 
     public function answers_relation()
     {
-        return $this->hasMany('App\Answer', 'question_id');
+        return $this->hasMany('App\Models\Answer', 'question_id');
     }
 
     public function lesson_relation()

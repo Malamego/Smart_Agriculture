@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\AnswersRequest;
 use App\DataTables\AnswersDataTable;
+use App\DataTables\UserAnswersDataTable;
 use App\Models\Answer;
 use App\Models\Question;
 use Hash;
@@ -144,5 +145,17 @@ class AnswersController extends Controller
             session()->flash('success', trans('main.deleted-message'));
             return redirect()->route('answers.index');
         }
+    }
+
+    /**
+     * user_answers
+     * @param  UserAnswersDataTable $dataTable
+     * @return UserAnswersDataTable
+     */
+    public function user_answers(UserAnswersDataTable $dataTable)
+    {
+        return $dataTable->render("{$this->viewPath}.index", [
+            'title' => trans('main.show-all') . ' ' . trans('main.user') . ' ' . trans('main.answers')
+        ]);
     }
 }

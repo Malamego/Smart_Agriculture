@@ -19,6 +19,9 @@ class QuestionsDataTable extends DataTable
     {
         return datatables($query)
         ->addColumn('checkbox', '<input type="checkbox" class="selected_data" name="selected_data[]" value="{{ $id }}">')
+        ->addColumn('lesson_relation.title', function ($model) {
+            return $model->lesson_relation ? $model->lesson_relation->title : 'N/A';
+        })
         ->addColumn('show', 'backend.questions.buttons.show')
         ->addColumn('edit', 'backend.questions.buttons.edit')
         ->addColumn('delete', 'backend.questions.buttons.delete')
@@ -34,7 +37,7 @@ class QuestionsDataTable extends DataTable
      */
     public function query()
     {
-        $query = Question::query()->with('lesson_relation', 'answers_relation')->select('questions.*');
+        $query = Question::query()->with('lesson_relation')->select('questions.*');
         return $this->applyScopes($query);
     }
 
@@ -48,7 +51,7 @@ class QuestionsDataTable extends DataTable
         $html =  $this->builder()
          ->columns($this->getColumns())
          ->ajax('')
-         ->parameters($this->getCustomBuilderParameters([1, 2, 3, 4], [], GetLanguage() == 'ar'));
+         ->parameters($this->getCustomBuilderParameters([1, 2, 3], [], GetLanguage() == 'ar'));
 
         return $html;
     }
@@ -74,7 +77,7 @@ class QuestionsDataTable extends DataTable
              ],
              [
                  'name' => "questions.title",
-                 'data'    => 'questions.title',
+                 'data'    => 'title',
                  'title'   => trans('main.question'),
                  'searchable' => true,
                  'orderable'  => true,
@@ -83,7 +86,7 @@ class QuestionsDataTable extends DataTable
 
              [
                  'name' => "questions.q_order",
-                 'data'    => 'questions.q_order',
+                 'data'    => 'q_order',
                  'title'   => trans('main.q_order'),
                  'searchable' => true,
                  'orderable'  => true,
@@ -98,20 +101,6 @@ class QuestionsDataTable extends DataTable
                  'orderable'  => true,
                  'width'          => '100px',
              ],
-
-             [
-                 'name' => "answers_relation.answer",
-                 'data'    => 'answers_relation.answer',
-                 'title'   => trans('main.answer'),
-                 'searchable' => true,
-                 'orderable'  => true,
-                 'width'          => '100px',
-             ],
-
-
-
-
-
              [
                  'name' => 'show',
                  'data' => 'show',

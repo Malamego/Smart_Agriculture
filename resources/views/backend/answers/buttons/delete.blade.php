@@ -5,13 +5,13 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button class="close" data-dismiss="modal">x</button>
-                <h4 class="modal-title">{{trans('main.delete')}} {{ $title }} ! </h4>
+                <h4 class="modal-title">{{trans('main.delete')}} {{ $answer }} ! </h4>
             </div>
             <div class="modal-body">
-                {{trans('main.ask-delete')}} : {{ $title }}
+                {{trans('main.ask-delete')}} : {{ $answer }}
             </div>
             <div class="modal-footer">
-                {!! Form::open([ 'method' => 'DELETE', 'route' => ['questions.destroy', $id] ]) !!}
+                {!! Form::open([ 'method' => 'DELETE', 'route' => ['answers.destroy', $id] ]) !!}
                 {!! Form::submit(trans('main.approval'), ['class' => 'btn btn-danger']) !!}
                 <a class="btn btn-default" data-dismiss="modal">{{trans('main.cancel')}}</a>
                 {!! Form::close() !!}

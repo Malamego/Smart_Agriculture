@@ -24,6 +24,9 @@
 
         <link href="{{asset('backend/base/css/main-'.GetDirection().'.min.css')}}" rel="stylesheet" type="text/css" />
 
+        <link href="{{ asset('backend/assets/global/plugins/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('backend/assets/global/plugins/select2/css/select2-bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+
         <style media="screen">
             body { font-family: 'Cairo', sans-serif !important; }
 
@@ -115,8 +118,8 @@
             <!-- BEGIN FOOTER -->
             <div class="page-footer">
                 <div class="page-footer-inner"> {{ date('Y') }} &copy; Developed By
-                    <a target="_blank" href="https://www.orbscope.com">
-                        @@Orbscope
+                    <a target="_blank" href="https://www.facebook.com/megomalamego">
+                        @@Mario Adel
                     </a>
                 </div>
                 <div class="scroll-to-top">
@@ -136,6 +139,9 @@
         <script src="{{asset('backend/base/js/main.min.js')}}" type="text/javascript"></script>
 
         <script src="{{asset('backend/base/js/sweetalert.min.js')}}" type="text/javascript"></script>
+
+        <script src="{{ asset('backend/assets/global/plugins/select2/js/select2.full.min.js') }}" type="text/javascript"></script>
+
 
         @include('backend.theme.includes.helperScripts')
 

@@ -52,4 +52,7 @@ Route::middleware(\App\Http\Middleware\LangMiddleware::class)->group(function ()
     // Answers
     Route::resource('answers', 'AnswersController');
     Route::post('answers/multi_delete', 'AnswersController@multi_delete')->name('answers.multi_delete');
+
+
+    Route::get('get-user-answers', 'AnswersController@user_answers')->name('user_answers.index');
 });

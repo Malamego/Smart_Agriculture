@@ -51,7 +51,9 @@ class UsersController extends Controller
     public function store(UsersRequest $request)
     {
         $requestAll = $request->all();
+
         $requestAll['image'] = Helper::Upload('users', $request->file('image'), 'checkImages');
+
         $user = User::create($requestAll);
 
         $roles = $request['roles']; //Retrieving the roles field

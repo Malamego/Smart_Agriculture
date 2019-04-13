@@ -748,4 +748,5 @@ return [
     'answer'                       => 'Answer',
     'true'                         => 'True',
     'false'                        => 'False',
+    'no_answers'                        => ' There Is No Answers For This Question ',
 ];

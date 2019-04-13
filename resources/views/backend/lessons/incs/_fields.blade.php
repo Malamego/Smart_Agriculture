@@ -15,7 +15,7 @@
     <div class="form-group{{ $errors->has('course_id') ? ' has-error' : '' }}">
         <label class="col-md-2 control-label">{{ trans('main.course') }} <span class="required"></span> </label>
         <div class="col-md-6">
-            <select class="form-control" id="course_id" name="course_id">
+            <select class="form-control select2" id="course_id" name="course_id">
               <option value="">{{ trans('main.select course') }}</option>
               @foreach ($cor as $c)
                   <option value="{{ $c->id }}" {{ getData($data, 'course_id') == $c->id ? 'selected' : '' }}>{{ $c->name }}</option>
@@ -58,8 +58,8 @@
     <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
         <label class="col-md-2 control-label">{{ trans('main.type') }} <span class="required"></span> </label>
         <div class="col-md-6">
-            <select class="form-control" id="type" name="type">
-                <option value=""></option>
+            <select class="form-control select2" id="type" name="type">
+                <option value="">{{ trans('main.type') }}</option>
                 <option value="video" {{ getData($data, 'type') == 'video' ? ' selected' : '' }}>{{trans('main.video')}}</option>
                 <option value="image" {{ getData($data, 'type') == 'image' ? ' selected' : '' }}>{{trans('main.image')}}</option>
                 <option value="text" {{ getData($data, 'type') == 'text' ?   ' selected' : '' }}>{{trans('main.text')}}</option>
@@ -76,8 +76,8 @@
     <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
         <label class="col-md-2 control-label">{{ trans('main.status') }} <span class="required"></span> </label>
         <div class="col-md-6">
-            <select class="form-control" id="status" name="status">
-                <option value=""></option>
+            <select class="form-control select2" id="status" name="status">
+                <option value="">{{ trans('main.status') }}</option>
                 <option value="active" {{ getData($data, 'status') == 'active' ? ' selected' : '' }}>{{trans('main.active')}}</option>
                 <option value="inactive" {{ getData($data, 'status') == 'inactive' ? ' selected' : '' }}>{{trans('main.inactive')}}</option>
             </select>
@@ -91,8 +91,8 @@
 
     <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
         <label class="col-md-2 control-label">{{ trans('main.content') }} <span class="required"></span> </label>
-        <div class="col-md-6">
-            <input type="text" name="content"  value="{{ getData($data, 'content') }}" class="form-control" placeholder="{{ trans('main.content') }}" required>
+        <div class="col-md-10">
+            <textarea name="content" class="form-control" placeholder="{{ trans('main.content') }}">{{ getData($data, 'content') }}</textarea>
             @if ($errors->has('content'))
                 <span class="help-block">
                     <strong class="help-block">{{ $errors->first('content') }}</strong>

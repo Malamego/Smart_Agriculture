@@ -19,9 +19,9 @@ class AnswersDataTable extends DataTable
     {
         return datatables($query)
         ->addColumn('checkbox', '<input type="checkbox" class="selected_data" name="selected_data[]" value="{{ $id }}">')
-        ->addColumn('show', 'backend.courses_details.buttons.show')
-        ->addColumn('edit', 'backend.courses_details.buttons.edit')
-        ->addColumn('delete', 'backend.courses_details.buttons.delete')
+        ->addColumn('show', 'backend.answers.buttons.show')
+        ->addColumn('edit', 'backend.answers.buttons.edit')
+        ->addColumn('delete', 'backend.answers.buttons.delete')
         ->rawColumns(['checkbox','show','edit', 'delete'])
         ;
     }
@@ -48,7 +48,7 @@ class AnswersDataTable extends DataTable
         $html =  $this->builder()
          ->columns($this->getColumns())
          ->ajax('')
-         ->parameters($this->getCustomBuilderParameters([1], [], GetLanguage() == 'ar'));
+         ->parameters($this->getCustomBuilderParameters([1,2,3], [], GetLanguage() == 'ar'));
 
         return $html;
     }
@@ -74,7 +74,7 @@ class AnswersDataTable extends DataTable
              ],
              [
                  'name' => "answers.answer",
-                 'data'    => 'answers.answer',
+                 'data'    => 'answer',
                  'title'   => trans('main.answer'),
                  'searchable' => true,
                  'orderable'  => true,
@@ -90,7 +90,7 @@ class AnswersDataTable extends DataTable
              ],
              [
                  'name' => "answers.status",
-                 'data'    => 'answers.status',
+                 'data'    => 'status',
                  'title'   => trans('main.status'),
                  'searchable' => true,
                  'orderable'  => true,

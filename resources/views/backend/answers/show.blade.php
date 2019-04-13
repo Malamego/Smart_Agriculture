@@ -6,7 +6,7 @@
             <div class="portlet light bordered">
                 <div class="portlet-title">
                     <div class="caption">
-                        <span class="caption-subject bold uppercase font-blue">{{$title}}</span>
+                        <span class="caption-subject bold uppercase font-blue">{{ $title }}</span>
                     </div>
                     <div class="actions">
                         <a class="btn btn-circle btn-icon-only btn-default" href="{{ route('questions.create') }}" data-toggle="tooltip" title="{{trans('main.add')}}  {{trans('main.answers')}}"> <i class="fa fa-plus"></i> </a>

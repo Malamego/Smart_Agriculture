@@ -11,50 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    if (auth()->check()) {
 
-        $class = auth()->user()->class_relation;
-        if ($class) {
-            $data = $class->details_relation()->where('showdate', date('Y-m-d'))
-                            ->where('status', 'active')
-                            ->with(['course_relation' => function ($rel) {
-                                // Course::with('lessons_relation')->get()
-                                return $rel->with(['lessons_relation' => function ($rel2) {
-                                    // Lesson::where('status', 'active')->orderBy('myorder', 'ASC');
-                                    return $rel2->where('status', 'active')->orderBy('myorder', 'ASC');
-                                }]);
-                            }])->get()->toArray();
+Route::middleware(\App\Http\Middleware\LangMiddleware::class)->group(function () {
+    Auth::routes();
 
-            if (!empty($data['course_relation']) && !empty($data['course_relation']['lessons_relation'])) {
-                abort(404, "يوجد خطا برجاء مراسلة المسؤول");
-            }
+    Route::get('/lang/{lang}', 'FrontendController@changeLang');
 
-            return view('welcome', [
-                'data' => $data,
-            ]);
-        } else {
-            abort(404, "يوجد خطا برجاء مراسلة المسؤول");
-        }
-    }
+    Route::get('/', 'FrontendController@index');
+
+    Route::get('/logout', 'FrontendController@logout');
+
+    Route::get('/lesson/{id}', 'FrontendController@lesson');
+
+    Route::post('/sendAnswers', 'FrontendController@sendAnswers');
 });
-
-Route::get('/lesson/{id}', function ($id) {
-    if (auth()->check()) {
-        $lesson = Lesson::find($id);
-
-        if (!$lesson) {
-            abort(404, "يوجد خطا برجاء مراسلة المسؤول");
-        }
-        dd("Stop");
-        return view('lesson', [
-            'data' => $data,
-        ]);
-    } else {
-        abort(404, "يوجد خطا برجاء مراسلة المسؤول");
-    }
-});
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

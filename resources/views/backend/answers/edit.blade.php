@@ -11,7 +11,7 @@
             <div class="portlet light bordered">
                 <div class="portlet-title">
                     <div class="caption">
-                        <span class="caption-subject bold uppercase font-blue">{{$title}}</span>
+                        <span class="caption-subject bold uppercase font-blue">{{ $title }}</span>
                     </div>
                     <div class="actions">
                         <a class="btn btn-circle btn-icon-only btn-default" href="{{route('answers.index')}}" data-toggle="tooltip" title="{{trans('main.show-all')}}   {{trans('main.answers')}}"> <i class="fa fa-list"></i> </a>

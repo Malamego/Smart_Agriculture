@@ -1,7 +1,7 @@
 <div class="form-body">
     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
         <label class="col-md-2 control-label">{{ trans('main.name') }} <span class="required"></span> </label>
-        <div class="col-md-6">
+        <div class="col-md-10">
             <input type="text" name="name" value="{{ getData($data, 'name') }}" class="form-control" placeholder="{{ trans('main.name') }}" required>
             @if ($errors->has('name'))
                 <span class="help-block">
@@ -13,7 +13,7 @@
 
     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
         <label class="col-md-2 control-label">{{ trans('main.email') }} <span class="required"></span> </label>
-        <div class="col-md-6">
+        <div class="col-md-10">
             <input type="email" name="email" value="{{ getData($data, 'email') }}" class="form-control" placeholder="{{ trans('main.email') }}" required>
             @if ($errors->has('email'))
                 <span class="help-block">
@@ -25,7 +25,7 @@
 
     <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
         <label class="control-label col-md-2">{{ trans('main.image') }}</label>
-        <div class="col-md-6">
+        <div class="col-md-10">
             <div class="fileinput fileinput-new" data-provides="fileinput">
                 <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
                     @if (checkValue(getData($data, 'image')))
@@ -51,7 +51,7 @@
 
     <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
         <label class="col-md-2 control-label">{{ trans('main.type') }} <span class="required"></span> </label>
-        <div class="col-md-6">
+        <div class="col-md-10">
             <select class="form-control" id="type" name="type">
                 <option value=""></option>
                 <option value="user" {{ getData($data, 'type') == 'user' ? ' selected' : '' }}>{{trans('main.user')}}</option>
@@ -67,7 +67,7 @@
     <!-- Add Student's Class -->
     <div class="form-group{{ $errors->has('class') ? ' has-error' : '' }}">
         <label class="col-md-2 control-label">{{ trans('main.class') }} <span class="required"></span> </label>
-        <div class="col-md-6">
+        <div class="col-md-10">
             <select class="form-control" id="class_id" name="class_id">
               @foreach ($cls as $c)
                   <option value="{{ $c->id }}" {{ getData($data, 'class_id') == $c->id ? 'selected' : '' }}>{{ $c->name }}</option>
@@ -87,7 +87,7 @@
                 <span class="required"></span>
             @endif
         </label>
-        <div class="col-md-6">
+        <div class="col-md-10">
             <input type="password" name="password" class="form-control" placeholder="{{ trans('main.password') }}" {{ $action == 'create' ? 'required' : '' }}>
             @if ($errors->has('password'))
                 <span class="help-block">
@@ -103,7 +103,7 @@
                 <span class="required"></span>
             @endif
         </label>
-        <div class="col-md-6">
+        <div class="col-md-10">
             <input type="password" name="password_confirmation" class="form-control" placeholder="{{ trans('main.password_confirmation') }}" {{ $action == 'create' ? 'required' : '' }}>
             @if ($errors->has('password_confirmation'))
                 <span class="help-block">
@@ -115,7 +115,7 @@
 <!-- Add by Mario for Phone -->
     <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
         <label class="col-md-2 control-label">{{ trans('main.phone') }} <span class="required"></span> </label>
-        <div class="col-md-6">
+        <div class="col-md-10">
             <input type="text" name="phone" value="{{ getData($data, 'phone') }}" class="form-control" placeholder="{{ trans('main.phone') }}" required>
             @if ($errors->has('phone'))
                 <span class="help-block">
@@ -128,7 +128,7 @@
 <!-- Add by Mario for IMEI -->
         <div class="form-group{{ $errors->has('imei') ? ' has-error' : '' }}">
             <label class="col-md-2 control-label">{{ trans('main.imei') }} <span class="required"></span> </label>
-            <div class="col-md-6">
+            <div class="col-md-10">
                 <input type="text" name="imei" value="{{ getData($data, 'imei') }}" class="form-control" placeholder="{{ trans('main.imei') }}" required>
                 @if ($errors->has('imei'))
                     <span class="help-block">

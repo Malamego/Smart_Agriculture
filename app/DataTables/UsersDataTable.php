@@ -30,6 +30,9 @@ class UsersDataTable extends DataTable
                 ';
             }
         })
+        ->addColumn('class_relation.name', function ($model) {
+            return $model->class_relation ? $model->class_relation->name : 'N/A';
+        })
         ->addColumn('show', 'backend.users.buttons.show')
         ->addColumn('edit', 'backend.users.buttons.edit')
         ->addColumn('delete', 'backend.users.buttons.delete')

@@ -74,9 +74,9 @@
                             <img style="width: 200px; height: 150px;" src="{{ ShowImage($show->image) }}" alt="">
                             <br><hr>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <strong>{{trans('main.content')}} : </strong>
-                            {{ $show->content }}
+                            {!! $show->content !!}
                             <br><hr>
                         </div>
                     </div>
