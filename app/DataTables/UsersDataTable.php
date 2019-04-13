@@ -59,10 +59,10 @@ class UsersDataTable extends DataTable
         $html =  $this->builder()
          ->columns($this->getColumns())
          ->ajax('')
-         ->parameters($this->getCustomBuilderParameters([1, 2, 3], []));
+         ->parameters($this->getCustomBuilderParameters([1, 2, 3, 4, 5 ], []));
 
         if (GetLanguage() == 'ar') {
-            $html = $html->parameters($this->getCustomBuilderParameters([1, 2, 3], [], true));
+            $html = $html->parameters($this->getCustomBuilderParameters([1, 2, 3, 4, 5], [], true));
         }
 
         return $html;
@@ -93,7 +93,23 @@ class UsersDataTable extends DataTable
                 'title'   => trans('main.name'),
                 'searchable' => true,
                 'orderable'  => true,
-                'width'          => '200px',
+                'width'          => '100px',
+            ],
+            [
+                'name' => "users.phone",
+                'data'    => 'users.phone',
+                'title'   => trans('main.phone'),
+                'searchable' => true,
+                'orderable'  => true,
+                'width'          => '100px',
+            ],
+            [
+                'name' => "class_relation.name",
+                'data'    => 'class_relation.name',
+                'title'   => trans('main.name'),
+                'searchable' => true,
+                'orderable'  => true,
+                'width'          => '100px',
             ],
             [
                 'name' => "users.email",
@@ -101,7 +117,7 @@ class UsersDataTable extends DataTable
                 'title'   => trans('main.email'),
                 'searchable' => true,
                 'orderable'  => true,
-                'width'          => '200px',
+                'width'          => '100px',
             ],
             [
                 'name' => "users.type",
@@ -109,7 +125,7 @@ class UsersDataTable extends DataTable
                 'title'   => trans('main.type'),
                 'searchable' => true,
                 'orderable'  => true,
-                'width'          => '200px',
+                'width'          => '100px',
             ],
             [
                 'name' => 'show',

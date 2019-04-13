@@ -104,12 +104,15 @@ class CoursesDetailsController extends Controller
     {
         $course_details = CoursesDetail::find($id);
 
-        if (CoursesDetail::where('id', '!=', $id)->where('showdate', $requestAll['showdate'])->where('class_id', $requestAll['class_id'])->exists()) {
+        if (CoursesDetail::where('id', '!=', $id)->where('showdate', $request['showdate'])->where('class_id', $request['class_id'])->exists()) {
             session()->flash('error', trans('main.course_details_showdate_unique'));
             return redirect()->back()->withInput();
         }
 
         $course_details->course_id = $request->course_id;
+        $course_details->class_id = $request->class_id;
+        $course_details->status = $request->status;
+        $course_details->showdate = $request->showdate;
         $course_details->save();
 
         session()->flash('success', trans('main.updated'));
