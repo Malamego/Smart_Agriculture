@@ -34,7 +34,7 @@ class LessonsDataTable extends DataTable
      */
     public function query()
     {
-        $query = Lesson::query()->select('lessons.*');
+        $query = Lesson::query()->with('course_relation')->select('lessons.*');
         return $this->applyScopes($query);
     }
 
@@ -48,11 +48,7 @@ class LessonsDataTable extends DataTable
         $html =  $this->builder()
          ->columns($this->getColumns())
          ->ajax('')
-         ->parameters($this->getCustomBuilderParameters([1], []));
-
-        if (GetLanguage() == 'ar') {
-            $html = $html->parameters($this->getCustomBuilderParameters([1], [], true));
-        }
+         ->parameters($this->getCustomBuilderParameters([1,2,3], [], GetLanguage() == 'ar'));        
 
         return $html;
     }
@@ -84,7 +80,23 @@ class LessonsDataTable extends DataTable
                  'orderable'  => true,
                  'width'          => '200px',
              ],
-            
+             [
+                 'name' => "lessons.myorder",
+                 'data'    => 'myorder',
+                 'title'   => trans('main.myorder'),
+                 'searchable' => true,
+                 'orderable'  => true,
+                 'width'          => '200px',
+             ],
+             [
+                 'name' => "course_relation.name",
+                 'data'    => 'course_relation.name',
+                 'title'   => trans('main.course'),
+                 'searchable' => true,
+                 'orderable'  => true,
+                 'width'          => '200px',
+             ],
+
              [
                  'name' => 'show',
                  'data' => 'show',

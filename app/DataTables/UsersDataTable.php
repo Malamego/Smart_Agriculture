@@ -45,7 +45,7 @@ class UsersDataTable extends DataTable
      */
     public function query()
     {
-        $query = User::query()->select('users.*');
+        $query = User::query()->with('class_relation')->select('users.*');
         return $this->applyScopes($query);
     }
 
@@ -59,11 +59,7 @@ class UsersDataTable extends DataTable
         $html =  $this->builder()
          ->columns($this->getColumns())
          ->ajax('')
-         ->parameters($this->getCustomBuilderParameters([1, 2, 3, 4, 5 ], []));
-
-        if (GetLanguage() == 'ar') {
-            $html = $html->parameters($this->getCustomBuilderParameters([1, 2, 3, 4, 5], [], true));
-        }
+        ->parameters($this->getCustomBuilderParameters([1,2,3,4], [], GetLanguage() == 'ar'));
 
         return $html;
     }
@@ -97,7 +93,7 @@ class UsersDataTable extends DataTable
             ],
             [
                 'name' => "users.phone",
-                'data'    => 'users.phone',
+                'data'    => 'phone',
                 'title'   => trans('main.phone'),
                 'searchable' => true,
                 'orderable'  => true,
