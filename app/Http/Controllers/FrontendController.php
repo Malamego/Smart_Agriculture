@@ -30,12 +30,16 @@ class FrontendController extends Controller
                 if (!empty($data['course_relation']) && !empty($data['course_relation']['lessons_relation'])) {
                     abort(404, "يوجد خطا برجاء مراسلة المسؤول");
                 }
+                if ($data == []) {
+                abort(404, "يوجد خطا برجاء مراسلة المسؤول");
+                }
+                else {
+                    session()->put('user_course', $data[0]['course_relation']['id']);
+                        return view('frontend.index', [
+                            'data' => $data,
+                        ]);
+                }
 
-                session()->put('user_course', $data[0]['course_relation']['id']);
-
-                return view('frontend.index', [
-                    'data' => $data,
-                ]);
             } else {
                 abort(404, "يوجد خطا برجاء مراسلة المسؤول");
             }
