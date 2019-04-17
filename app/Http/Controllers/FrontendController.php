@@ -33,6 +33,10 @@ class FrontendController extends Controller
 
                 session()->put('user_course', $data[0]['course_relation']['id']);
 
+                if (!is_null(auth()->user()->last_lesson) && $lesson = Lesson::find(auth()->user()->last_lesson)) {
+                    return redirect("/lesson/{$lesson->id}");
+                }
+                
                 return view('frontend.index', [
                     'data' => $data,
                 ]);
@@ -55,6 +59,10 @@ class FrontendController extends Controller
                 abort(404, "يوجد خطا برجاء مراسلة المسؤول");
             }
 
+            $user = auth()->user();
+            $user->last_lesson = $lesson->id;
+            $user->save();
+
             return view('frontend.lesson', [
                 'data' => $lesson,
             ]);
@@ -75,6 +83,13 @@ class FrontendController extends Controller
                             'answer_id' => $a,
                             'answer_status' => Answer::find($a)->status,
                         ]);
+
+                        if (Answer::find($a)->status == 'true') {
+                            $user = auth()->user();
+                            $user->score = intval($user->score) + 10;
+                            $user->save();
+                        }
+
                     }
                 }
 
