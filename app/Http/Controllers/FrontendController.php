@@ -36,7 +36,7 @@ class FrontendController extends Controller
                 if (!is_null(auth()->user()->last_lesson) && $lesson = Lesson::find(auth()->user()->last_lesson)) {
                     return redirect("/lesson/{$lesson->id}");
                 }
-                
+
                 return view('frontend.index', [
                     'data' => $data,
                 ]);
