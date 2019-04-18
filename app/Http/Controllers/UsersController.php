@@ -53,6 +53,7 @@ class UsersController extends Controller
         $requestAll = $request->all();
 
         $requestAll['image'] = Helper::Upload('users', $request->file('image'), 'checkImages');
+        $requestAll['password'] = Hash::make($request->password);
 
         $user = User::create($requestAll);
 

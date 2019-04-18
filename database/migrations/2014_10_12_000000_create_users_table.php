@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('image')->nullable();
             $table->string('phone'); // For mobile Phone
             $table->integer('class_id')->nullable(); // To know class name
-            $table->string('imei')->nullable(); // To know the Machine (tablet) Number
+            $table->string('imei')->nullable(); // To know the Machine (tablet) Number            
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

@@ -16,6 +16,7 @@ class AddScoreToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->integer('score')->default(0);
             $table->integer('last_lesson')->nullable();
+            $table->string('identity')->nullable(); // To know the ٍStudent (ID) Number
         });
     }
 
@@ -29,6 +30,7 @@ class AddScoreToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('score');
             $table->dropColumn('last_lesson');
+            $table->dropColumn('identity');
         });
     }
 }

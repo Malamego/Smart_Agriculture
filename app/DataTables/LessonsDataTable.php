@@ -48,7 +48,7 @@ class LessonsDataTable extends DataTable
         $html =  $this->builder()
          ->columns($this->getColumns())
          ->ajax('')
-         ->parameters($this->getCustomBuilderParameters([1,2,3], [], GetLanguage() == 'ar'));        
+         ->parameters($this->getCustomBuilderParameters([1,2,3], [], GetLanguage() == 'ar'));
 
         return $html;
     }
@@ -86,7 +86,7 @@ class LessonsDataTable extends DataTable
                  'title'   => trans('main.myorder'),
                  'searchable' => true,
                  'orderable'  => true,
-                 'width'          => '200px',
+                 'width'          => '100px',
              ],
              [
                  'name' => "course_relation.name",
@@ -94,7 +94,7 @@ class LessonsDataTable extends DataTable
                  'title'   => trans('main.course'),
                  'searchable' => true,
                  'orderable'  => true,
-                 'width'          => '200px',
+                 'width'          => '300px',
              ],
 
              [

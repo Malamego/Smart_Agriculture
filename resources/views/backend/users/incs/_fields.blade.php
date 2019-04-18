@@ -55,7 +55,7 @@
             <select class="form-control" id="type" name="type">
                 <option value=""></option>
                 <option value="user" {{ getData($data, 'type') == 'user' ? ' selected' : '' }}>{{trans('main.user')}}</option>
-                <option value="admin" {{ getData($data, 'type') == 'admin' ? ' selected' : '' }}>{{trans('main.admin')}}</option>
+                <!-- <option value="admin" {{ getData($data, 'type') == 'admin' ? ' selected' : '' }}>{{trans('main.admin')}}</option> -->
             </select>
             @if ($errors->has('type'))
                 <span class="help-block">
@@ -133,6 +133,18 @@
                 @if ($errors->has('imei'))
                     <span class="help-block">
                         <strong class="help-block">{{ $errors->first('imei') }}</strong>
+                    </span>
+                @endif
+            </div>
+        </div>
+<!-- Add by Mario for ID Number -->
+        <div class="form-group{{ $errors->has('identity') ? ' has-error' : '' }}">
+            <label class="col-md-2 control-label">{{ trans('main.identity') }} <span class="required"></span> </label>
+            <div class="col-md-10">
+                <input type="text" name="identity" value="{{ getData($data, 'identity') }}" class="form-control" placeholder="{{ trans('main.identity') }}" required>
+                @if ($errors->has('identity'))
+                    <span class="help-block">
+                        <strong class="help-block">{{ $errors->first('identity') }}</strong>
                     </span>
                 @endif
             </div>

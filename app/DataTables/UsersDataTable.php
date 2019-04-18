@@ -62,7 +62,7 @@ class UsersDataTable extends DataTable
         $html =  $this->builder()
          ->columns($this->getColumns())
          ->ajax('')
-        ->parameters($this->getCustomBuilderParameters([1,2,3,4], [], GetLanguage() == 'ar'));
+        ->parameters($this->getCustomBuilderParameters([1,2,3,4,5], [], GetLanguage() == 'ar'));
 
         return $html;
     }
@@ -105,7 +105,7 @@ class UsersDataTable extends DataTable
             [
                 'name' => "class_relation.name",
                 'data'    => 'class_relation.name',
-                'title'   => trans('main.name'),
+                'title'   => trans('main.class'),
                 'searchable' => true,
                 'orderable'  => true,
                 'width'          => '100px',
@@ -114,6 +114,14 @@ class UsersDataTable extends DataTable
                 'name' => "users.email",
                 'data'    => 'email',
                 'title'   => trans('main.email'),
+                'searchable' => true,
+                'orderable'  => true,
+                'width'          => '100px',
+            ],
+            [
+                'name' => "users.score",
+                'data'    => 'score',
+                'title'   => trans('main.score'),
                 'searchable' => true,
                 'orderable'  => true,
                 'width'          => '100px',

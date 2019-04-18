@@ -740,7 +740,7 @@ return [
     'courses'                       => 'Courses',
     'courses_details'               => 'Courses_Details',
     'select course'                 => 'Select Course',
-    'course_details_showdate_unique'                 => 'Course Details Dublicated Into Same Class With Same Show Date',
+    'course_details_showdate_unique'     => 'Course Details Dublicated Into Same Class With Same Show Date',
     'select lesson'               => 'Select Lesson for this Question',
     'select question'               => 'Select Question for this Answer',
     'q_order'                       => 'Question Order in this Lesson',
@@ -748,5 +748,8 @@ return [
     'answer'                       => 'Answer',
     'true'                         => 'True',
     'false'                        => 'False',
-    'no_answers'                        => ' There Is No Answers For This Question ',
+    'score'                        => 'Score',
+    'login_error'                  => 'Login Error',
+    'identity'                     => 'Identity',
+    'no_answers'                   => ' There Is No Answers For This Question ',
 ];
