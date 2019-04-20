@@ -29,7 +29,7 @@
                         <div class="form-actions">
                             <div class="row">
                                 <div class="col-md-offset-2 col-md-10">
-                                    <button type="submit" class="btn green">{{ trans('main.edit') }} {{ trans('main.question') }}</button>
+                                    <button type="submit" class="btn green">{{ trans('main.edit') }} {{ trans('main.answer') }}</button>
                                     <a href="{{ route('answers.index') }}" class="btn default">{{ trans('main.cancel') }}</a>
                                 </div>
                             </div>

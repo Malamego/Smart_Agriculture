@@ -78,7 +78,7 @@ class CoursesDetailsDataTable extends DataTable
                  'title'   => trans('main.course'),
                  'searchable' => true,
                  'orderable'  => true,
-                 'width'          => '200px',
+                 'width'          => '300px',
              ],
              [
                  'name' => "class_relation.name",
@@ -102,7 +102,7 @@ class CoursesDetailsDataTable extends DataTable
                  'title'   => trans('main.status'),
                  'searchable' => true,
                  'orderable'  => true,
-                 'width'          => '100px',
+                 'width'          => '75px',
              ],
              [
                  'name' => 'show',

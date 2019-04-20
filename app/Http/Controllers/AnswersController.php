@@ -84,7 +84,7 @@ class AnswersController extends Controller
         $ans = Answer::findOrFail($id);
         $quest = Question::all();
         return view("{$this->viewPath}.edit", [
-            'title' => trans('main.edit') . ' ' . trans('main.Answer') . ' : ' . $ans->name,
+            'title' => trans('main.edit') . ' ' . trans('main.answer') . ' : ' . $ans->name,
             'edit' => $ans,
             'quest' => $quest,
         ]);
