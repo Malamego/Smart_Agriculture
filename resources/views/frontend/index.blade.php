@@ -32,28 +32,29 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h3 class="text-center"> تفاصيل المساق  </h3>
+                    <h3 class="text-center">تفاصيل اليوم</h3>
                 </div>
                 <div class="col-md-12">
                     <p class="pull-right">
-                        <strong> تاريخ العرض :   </strong> {{ $data[0]['showdate'] }}
+                      <!-- $data[0]['showdate'] -->
+                        <strong> تاريخ العرض :   </strong>  @if ($data[] )  {{ $data[0]['showdate'] }} @endif
                     </p>
                 </div>
                 <div class="col-md-12">
                     <p class="pull-right">
-                        <strong> اسم المساق :  </strong> {{ $data[0]['course_relation']['name'] }}
+                        <strong> اسم اليوم :  </strong> @if ($data[] ) {{ $data[0]['course_relation']['name'] }} @endif
                     </p>
                 </div>
                 <div class="col-md-12">
                     <p class="pull-right">
-                        <strong> تفاصيل المساق  :  </strong> {{ $data[0]['course_relation']['desc'] }}
+                        <strong> تفاصيل اليوم :  </strong> @if ($data[] ) {{ $data[0]['course_relation']['desc'] }} @endif
                     </p>
                 </div>
-                <div class="col-md-12">
+                <!-- <div class="col-md-12">
                     <p class="pull-right">
                         <strong> سعر المساق  :  </strong> {{ $data[0]['course_relation']['price'] }} جنية مصري
                     </p>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

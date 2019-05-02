@@ -30,8 +30,12 @@ class FrontendController extends Controller
                 if (!empty($data['course_relation']) && !empty($data['course_relation']['lessons_relation'])) {
                     abort(404, "يوجد خطا برجاء مراسلة المسؤول");
                 }
-
-               session()->put('user_course', $data[0]['course_relation']['id']);
+                // if ($data[0]['course_relation']['id']!=null) {
+                //   abort(404, "يوجد خطا برجاء مراسلة المسؤول");
+                // }
+                // else {
+                //     session()->put('user_course', $data[0]['course_relation']['id']);
+                // }
 
                 if (!is_null(auth()->user()->last_lesson) && $lesson = Lesson::find(auth()->user()->last_lesson)) {
                     return redirect("/lesson/{$lesson->id}");
