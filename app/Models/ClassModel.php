@@ -19,8 +19,13 @@ class ClassModel extends Model
         return $this->hasMany('App\Models\User', 'class_id');
     }
 
+    public function students_relation()
+    {
+        return $this->hasMany('App\Models\Student', 'class_id');
+    }
+
     public function details_relation()
     {
-        return $this->hasMany('App\Models\CoursesDetail', 'class_id');
+        return $this->hasMany('App\Models\WeeksDetail', 'class_id');
     }
 }

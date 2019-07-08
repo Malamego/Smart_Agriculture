@@ -28,31 +28,25 @@ Route::middleware(\App\Http\Middleware\LangMiddleware::class)->group(function ()
     Route::resource('permissions', 'PermissionController');
     Route::post('permissions/multi_delete', 'PermissionController@multi_delete')->name('permissions.multi_delete');
 
-    // lessons
-    Route::resource('lessons', 'LessonsController');
-    Route::post('lessons/multi_delete', 'LessonController@multi_delete')->name('lessons.multi_delete');
+    // Statistics
+    Route::resource('statistics', 'StatisticsController');
+    Route::post('statistics/multi_delete', 'StatisticsController@multi_delete')->name('statistics.multi_delete');
 
 
     // classes
     Route::resource('classes', 'ClassesController');
     Route::post('classes/multi_delete', 'ClassController@multi_delete')->name('classes.multi_delete');
 
-    // courses
-    Route::resource('courses', 'CoursesController');
-    Route::post('courses/multi_delete', 'CoursesController@multi_delete')->name('courses.multi_delete');
+    // weeks
+    Route::resource('weeks', 'WeeksController');
+    Route::post('weeks/multi_delete', 'WeeksController@multi_delete')->name('weeks.multi_delete');
 
-    // courses_Details
-    Route::resource('courses_details', 'CoursesDetailsController');
-    Route::post('courses_details/multi_delete', 'CoursesDetailsController@multi_delete')->name('courses_details.multi_delete');
+    // weeks_Details
+    Route::resource('weeks_details', 'WeeksDetailsController');
+    Route::post('weeks_details/multi_delete', 'WeeksDetailsController@multi_delete')->name('weeks_details.multi_delete');
 
-    // Questions
-    Route::resource('questions', 'QuestionsController');
-    Route::post('questions/multi_delete', 'QuestionsController@multi_delete')->name('questions.multi_delete');
-
-    // Answers
-    Route::resource('answers', 'AnswersController');
-    Route::post('answers/multi_delete', 'AnswersController@multi_delete')->name('answers.multi_delete');
-
-
-    Route::get('get-user-answers', 'AnswersController@user_answers')->name('user_answers.index');
+    // Students
+    Route::resource('students', 'StudentsController');
+    Route::post('students/multi_delete', 'StudentsController@multi_delete')->name('students.multi_delete');
+    
 });

@@ -2,10 +2,10 @@
 
 namespace App\DataTables;
 
-use App\Models\User;
+use App\Models\Student;
 use Yajra\DataTables\Services\DataTable;
 
-class UsersDataTable extends DataTable
+class StudentsDataTable extends DataTable
 {
     use BuilderParameters;
 
@@ -17,38 +17,24 @@ class UsersDataTable extends DataTable
      */
     public function dataTable($query)
     {
-        return datatables($query)
-        ->addColumn('checkbox', '<input type="checkbox" class="selected_data" name="selected_data[]" value="{{ $id }}">')
-        ->addColumn('type', function ($model) {
-            if ($model->type == 'admin') {
-                return '
-                    <span style="padding: 1px 6px;" class="label lable-sm label-success">' . trans("main.admin") . '</span>
-                ';
-            } else {
-                return '
-                    <span style="padding: 1px 6px;" class="label lable-sm label-warning">' . trans("main.user") . '</span>
-                ';
-            }
-        })
-        ->addColumn('class_relation.name', function ($model) {
-            return $model->class_relation ? $model->class_relation->name : 'N/A';
-        })
-        ->addColumn('show', 'backend.users.buttons.show')
-        ->addColumn('edit', 'backend.users.buttons.edit')
-        ->addColumn('delete', 'backend.users.buttons.delete')
-        ->rawColumns(['checkbox','show','edit', 'delete', 'type'])
-        ;
+      return datatables($query)
+      ->addColumn('checkbox', '<input type="checkbox" class="selected_data" name="selected_data[]" value="{{ $id }}">')
+      ->addColumn('show', 'backend.students.buttons.show')
+      ->addColumn('edit', 'backend.students.buttons.edit')
+      ->addColumn('delete', 'backend.students.buttons.delete')
+      ->rawColumns(['checkbox','show','edit', 'delete'])
+      ;
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\User $model
+     * @param \App\Models\ClassModel $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function query()
     {
-        $query = User::query()->with('class_relation')->select('users.*');
+        $query = Student::query()->with('class_relation')->select('students.*');
         return $this->applyScopes($query);
     }
 
@@ -60,9 +46,9 @@ class UsersDataTable extends DataTable
     public function html()
     {
         $html =  $this->builder()
-         ->columns($this->getColumns())
-         ->ajax('')
-        ->parameters($this->getCustomBuilderParameters([1,2,3,4], [], GetLanguage() == 'ar'));
+        ->columns($this->getColumns())
+        ->ajax('')
+        ->parameters($this->getCustomBuilderParameters([1, 2, 3, 4], [], GetLanguage() == 'ar'));
 
         return $html;
     }
@@ -87,41 +73,49 @@ class UsersDataTable extends DataTable
                 'aaSorting'      => 'none'
             ],
             [
-                'name' => "users.name",
+                'name' => "students.name",
                 'data'    => 'name',
                 'title'   => trans('main.name'),
                 'searchable' => true,
                 'orderable'  => true,
-                'width'          => '100px',
+                'width'          => '200px',
             ],
             [
-                'name' => "users.phone",
+                'name' => "students.phone",
                 'data'    => 'phone',
                 'title'   => trans('main.phone'),
                 'searchable' => true,
                 'orderable'  => true,
                 'width'          => '100px',
             ],
+            // [
+            //     'name' => "class_relation.name",
+            //     'data'    => 'class_relation.name',
+            //     'title'   => trans('main.class'),
+            //     'searchable' => true,
+            //     'orderable'  => true,
+            //     'width'          => '200px',
+            // ],
             [
-                'name' => "class_relation.name",
-                'data'    => 'class_relation.name',
-                'title'   => trans('main.class'),
-                'searchable' => true,
-                'orderable'  => true,
-                'width'          => '100px',
-            ],
-            [
-                'name' => "users.email",
+                'name' => "students.email",
                 'data'    => 'email',
                 'title'   => trans('main.email'),
                 'searchable' => true,
                 'orderable'  => true,
                 'width'          => '100px',
             ],
+            // [
+            //     'name' => "user_relation.name",
+            //     'data'    => 'user_relation.name',
+            //     'title'   => trans('main.teacher'),
+            //     'searchable' => true,
+            //     'orderable'  => true,
+            //     'width'          => '100px',
+            // ],
             [
-                'name' => "users.type",
-                'data'    => 'type',
-                'title'   => trans('main.type'),
+                'name' => "students.score",
+                'data'    => 'score',
+                'title'   => trans('main.score'),
                 'searchable' => true,
                 'orderable'  => true,
                 'width'          => '100px',
@@ -159,6 +153,6 @@ class UsersDataTable extends DataTable
 
     protected function filename()
     {
-        return 'Users_' . date('YmdHis');
+        return 'Students_' . date('YmdHis');
     }
 }

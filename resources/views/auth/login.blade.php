@@ -36,7 +36,7 @@
         <!-- BEGIN LOGO -->
         <div class="logo">
             <a href="{{ url('/login') }}">
-                <img style="width:100px" src="{{ asset('frontend/img/core-img/logo.jpg') }}" alt="" />
+                <img style="width:400px" src="{{ asset('frontend/img/core-img/logo.jpg') }}" alt="" />
             </a>
         </div>
         <!-- END LOGO -->
